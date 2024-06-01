@@ -61,7 +61,7 @@
             this.airForm1.Customization = "AAAA/1paWv9ycnL/";
             this.airForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.airForm1.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F);
-            this.airForm1.Image = null;
+            this.airForm1.Image = ((System.Drawing.Image)(resources.GetObject("airForm1.Image")));
             this.airForm1.Location = new System.Drawing.Point(0, 0);
             this.airForm1.MinimumSize = new System.Drawing.Size(112, 35);
             this.airForm1.Movable = true;
