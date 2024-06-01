@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.airForm1 = new ReaLTaiizor.Forms.AirForm();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.OutputDataListBox = new ReaLTaiizor.Controls.DungeonListBox();
             this.moonLabel1 = new ReaLTaiizor.Controls.MoonLabel();
             this.ToggleButton = new ReaLTaiizor.Controls.DungeonToggleButton();
             this.InputFormatTextBox = new ReaLTaiizor.Controls.HopeTextBox();
@@ -40,6 +39,7 @@
             this.materialButton2 = new ReaLTaiizor.Controls.MaterialButton();
             this.materialButton3 = new ReaLTaiizor.Controls.MaterialButton();
             this.materialButton1 = new ReaLTaiizor.Controls.MaterialButton();
+            this.OutputDataTextBox = new System.Windows.Forms.TextBox();
             this.airForm1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -48,8 +48,8 @@
             // 
             this.airForm1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.airForm1.BorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.airForm1.Controls.Add(this.OutputDataTextBox);
             this.airForm1.Controls.Add(this.pictureBox1);
-            this.airForm1.Controls.Add(this.OutputDataListBox);
             this.airForm1.Controls.Add(this.moonLabel1);
             this.airForm1.Controls.Add(this.ToggleButton);
             this.airForm1.Controls.Add(this.InputFormatTextBox);
@@ -85,18 +85,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(370, 93);
             this.pictureBox1.TabIndex = 33;
             this.pictureBox1.TabStop = false;
-            // 
-            // OutputDataListBox
-            // 
-            this.OutputDataListBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.OutputDataListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.OutputDataListBox.FormattingEnabled = true;
-            this.OutputDataListBox.IntegralHeight = false;
-            this.OutputDataListBox.ItemHeight = 18;
-            this.OutputDataListBox.Location = new System.Drawing.Point(0, 362);
-            this.OutputDataListBox.Name = "OutputDataListBox";
-            this.OutputDataListBox.Size = new System.Drawing.Size(370, 96);
-            this.OutputDataListBox.TabIndex = 32;
+            this.pictureBox1.Click += new System.EventHandler(this.PictureBox1_Click);
             // 
             // moonLabel1
             // 
@@ -266,6 +255,14 @@
             this.materialButton1.UseVisualStyleBackColor = true;
             this.materialButton1.Click += new System.EventHandler(this.FormatButton_Click);
             // 
+            // OutputDataTextBox
+            // 
+            this.OutputDataTextBox.Location = new System.Drawing.Point(0, 343);
+            this.OutputDataTextBox.Multiline = true;
+            this.OutputDataTextBox.Name = "OutputDataTextBox";
+            this.OutputDataTextBox.Size = new System.Drawing.Size(370, 115);
+            this.OutputDataTextBox.TabIndex = 34;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,9 +293,9 @@
         private ReaLTaiizor.Controls.DungeonToggleButton ToggleButton;
         private ReaLTaiizor.Controls.MaterialButton materialButton2;
         private ReaLTaiizor.Controls.MoonLabel moonLabel1;
-        private ReaLTaiizor.Controls.DungeonListBox OutputDataListBox;
         private ReaLTaiizor.Controls.MaterialButton materialButton3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox OutputDataTextBox;
     }
 }
 

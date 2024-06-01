@@ -9,10 +9,43 @@ namespace PatternReformatter
     public partial class Form1 : Form
     {
         private List<string> linesFromFile = new List<string>();
-
+        private string bannerImageUrl;
+        private string redirectUrl;
         public Form1()
         {
             InitializeComponent();
+            FetchResourcesAndDisplayBanner();
+        }
+
+        private async void FetchResourcesAndDisplayBanner()
+        {
+            try
+            {
+                var resourcesFetcher = new ResourcesFetcher();
+                (bannerImageUrl, redirectUrl) = await resourcesFetcher.FetchResources();
+                DisplayBanner();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error fetching resources: {ex.Message}");
+            }
+        }
+
+        private void DisplayBanner()
+        {
+            if (!string.IsNullOrEmpty(bannerImageUrl))
+            {
+                pictureBox1.Load(bannerImageUrl);
+                pictureBox1.Click += PictureBox1_Click;
+            }
+        }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(redirectUrl))
+            {
+                System.Diagnostics.Process.Start(redirectUrl);
+            }
         }
 
         private void ChooseFileButton_Click(object sender, EventArgs e)
@@ -20,13 +53,17 @@ namespace PatternReformatter
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.Filter = "Text files (*.txt)|*.txt";
-                openFileDialog.Title = "Выбрать файл";
+                openFileDialog.Title = "Select a text file";
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string filePath = openFileDialog.FileName;
-                    linesFromFile = File.ReadAllLines(filePath).ToList();                    
-                    MessageBox.Show("Файл успешно загружен!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    linesFromFile = File.ReadAllLines(filePath).ToList();
+                    InputDataTextBox.Text = string.Join(Environment.NewLine, linesFromFile);
+                    if (linesFromFile.Count == 0)
+                        MessageBox.Show("Из файла не удалось ничего прочитать, проверьте его", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    else
+                        MessageBox.Show("Файл успешно загружен!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -34,18 +71,20 @@ namespace PatternReformatter
         private void FormatButton_Click(object sender, EventArgs e)
         {
             string inputFormat = InputFormatTextBox.Text;
+            if (string.IsNullOrEmpty(inputFormat))
+            {
+                MessageBox.Show("Проверьте формат для строк, возможно вы его не указали", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+                
+
             List<int> formatIndexes = inputFormat.Split(':').Select(int.Parse).ToList();
 
             List<string> inputLines = new List<string>();
 
-            if (linesFromFile.Any())
-            {
-                inputLines = linesFromFile;
-            }
-            else
-            {
-                inputLines = InputDataTextBox.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.None).ToList();
-            }
+            inputLines = linesFromFile.Any()
+                ? linesFromFile
+                : InputDataTextBox.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.None).ToList();
 
             List<string> formattedLines = new List<string>();
 
@@ -65,8 +104,7 @@ namespace PatternReformatter
                 formattedLines.Add(string.Join(":", formattedParts));
             }
 
-            OutputDataListBox.Items.Clear();
-            OutputDataListBox.Items.AddRange(formattedLines.ToArray());
+            OutputDataTextBox.Text = string.Join(Environment.NewLine, formattedLines);
 
             if (ToggleButton.Toggled)
             {
