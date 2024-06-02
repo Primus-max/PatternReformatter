@@ -1,4 +1,7 @@
-﻿namespace PatternReformatter
+﻿using System.IO;
+using System;
+
+namespace PatternReformatter
 {
     partial class Form1
     {
@@ -28,6 +31,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Icon = new System.Drawing.Icon("Hu1Gxym.ico");
+            this.ShowIcon = true;
+
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.airForm1 = new ReaLTaiizor.Forms.AirForm();
             this.OutputDataTextBox = new System.Windows.Forms.TextBox();
@@ -174,6 +180,7 @@
             this.nightLinkLabel1.TabStop = true;
             this.nightLinkLabel1.Text = "Как указать шаблон для форматирования \r\n";
             this.nightLinkLabel1.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(89)))), ((int)(((byte)(84)))));
+            this.nightLinkLabel1.Click += new System.EventHandler(this.OpenInfoPopup_Click);
             // 
             // InputDataTextBox
             // 

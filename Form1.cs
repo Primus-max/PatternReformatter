@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.AccessControl;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace PatternReformatter
@@ -13,14 +11,14 @@ namespace PatternReformatter
         private List<string> linesFromFile = new List<string>();
         private string bannerImageUrl;
         private string redirectUrl;
-                
+
         public Form1()
         {
             InitializeComponent();
             FetchResourcesAndDisplayBanner();
 
             this.Load += new EventHandler(this.AirForm1_Load);
-            AppDomain.CurrentDomain.UnhandledException += HandleGlobalException;
+            AppDomain.CurrentDomain.UnhandledException += HandleGlobalException;           
         }
 
         private void HandleGlobalException(object sender, UnhandledExceptionEventArgs e)
@@ -44,7 +42,7 @@ namespace PatternReformatter
 
             // Текущая дата
             DateTime currentDate = DateTime.Now;
-           
+
             // Проверка текущей даты с конечной датой
             if (currentDate > expirationDate)
             {
@@ -112,7 +110,7 @@ namespace PatternReformatter
                 MessageBox.Show("Проверьте формат для строк, возможно вы его не указали", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-                
+
 
             List<int> formatIndexes = inputFormat.Split(':').Select(int.Parse).ToList();
 
@@ -157,6 +155,12 @@ namespace PatternReformatter
                     }
                 }
             }
-        }      
+        }
+
+        private void OpenInfoPopup_Click(object sender, EventArgs e)
+        {
+            InfoPopup infoPopup = new InfoPopup();
+            infoPopup.Show();
+        }
     }
 }
