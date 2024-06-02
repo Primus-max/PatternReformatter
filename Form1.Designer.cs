@@ -31,9 +31,6 @@ namespace PatternReformatter
         /// </summary>
         private void InitializeComponent()
         {
-            this.Icon = new System.Drawing.Icon("Hu1Gxym.ico");
-            this.ShowIcon = true;
-
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.airForm1 = new ReaLTaiizor.Forms.AirForm();
             this.OutputDataTextBox = new System.Windows.Forms.TextBox();
@@ -77,7 +74,7 @@ namespace PatternReformatter
             this.airForm1.Sizable = true;
             this.airForm1.Size = new System.Drawing.Size(370, 557);
             this.airForm1.SmartBounds = true;
-            this.airForm1.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultLocation;
+            this.airForm1.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.airForm1.TabIndex = 0;
             this.airForm1.Text = "REFORMATTER";
             this.airForm1.TransparencyKey = System.Drawing.Color.Fuchsia;
@@ -281,9 +278,11 @@ namespace PatternReformatter
             this.Controls.Add(this.airForm1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.HelpButton = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(370, 557);
             this.MinimumSize = new System.Drawing.Size(370, 557);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "REFORMATTER";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.airForm1.ResumeLayout(false);

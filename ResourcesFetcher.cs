@@ -7,7 +7,7 @@ namespace PatternReformatter
 {
     public class ResourcesFetcher
     {
-        private const string ResourcesUrl = "https://gist.githubusercontent.com/Primus-max/65db35ac4fe7a43ac38381179dc54b32/raw/ee0626116ac1e682c59d1523e5e598dda239bb4f/resources.txt";
+        private const string ResourcesUrl = "https://gist.githubusercontent.com/SmsactivatorRu/425c14718f975bd8bd25d90aa421cee7/raw/gistfile1.txt";
         private const string LocalFilePath = "resources.txt";
 
         public async Task<(string bannerImageUrl, string redirectUrl)> FetchResources()
