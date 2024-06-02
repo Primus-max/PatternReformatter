@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace PatternReformatter
@@ -11,10 +13,44 @@ namespace PatternReformatter
         private List<string> linesFromFile = new List<string>();
         private string bannerImageUrl;
         private string redirectUrl;
+                
         public Form1()
         {
             InitializeComponent();
             FetchResourcesAndDisplayBanner();
+
+            this.Load += new EventHandler(this.AirForm1_Load);
+            AppDomain.CurrentDomain.UnhandledException += HandleGlobalException;
+        }
+
+        private void HandleGlobalException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Exception ex = e.ExceptionObject as Exception;
+            if (ex != null)
+            {
+                MessageBox.Show($"Произошла ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show("Произошла неустановленная ошибка.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void AirForm1_Load(object sender, EventArgs e)
+        {
+            // Конечная дата для проверки
+            DateTime expirationDate = new DateTime(2024, 06, 03);
+
+            // Текущая дата
+            DateTime currentDate = DateTime.Now;
+           
+            // Проверка текущей даты с конечной датой
+            if (currentDate > expirationDate)
+            {
+                MessageBox.Show("Срок действия программы истек. Пожалуйста, свяжитесь с разработчиком.", "Срок действия истек", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Close();
+            }
         }
 
         private async void FetchResourcesAndDisplayBanner()
@@ -121,6 +157,6 @@ namespace PatternReformatter
                     }
                 }
             }
-        }
+        }      
     }
 }

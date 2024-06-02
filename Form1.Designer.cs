@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.airForm1 = new ReaLTaiizor.Forms.AirForm();
+            this.OutputDataTextBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.moonLabel1 = new ReaLTaiizor.Controls.MoonLabel();
             this.ToggleButton = new ReaLTaiizor.Controls.DungeonToggleButton();
@@ -39,7 +40,6 @@
             this.materialButton2 = new ReaLTaiizor.Controls.MaterialButton();
             this.materialButton3 = new ReaLTaiizor.Controls.MaterialButton();
             this.materialButton1 = new ReaLTaiizor.Controls.MaterialButton();
-            this.OutputDataTextBox = new System.Windows.Forms.TextBox();
             this.airForm1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -63,7 +63,8 @@
             this.airForm1.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F);
             this.airForm1.Image = ((System.Drawing.Image)(resources.GetObject("airForm1.Image")));
             this.airForm1.Location = new System.Drawing.Point(0, 0);
-            this.airForm1.MinimumSize = new System.Drawing.Size(112, 35);
+            this.airForm1.MaximumSize = new System.Drawing.Size(370, 557);
+            this.airForm1.MinimumSize = new System.Drawing.Size(370, 557);
             this.airForm1.Movable = true;
             this.airForm1.Name = "airForm1";
             this.airForm1.NoRounding = false;
@@ -75,6 +76,14 @@
             this.airForm1.Text = "REFORMATTER";
             this.airForm1.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.airForm1.Transparent = false;
+            // 
+            // OutputDataTextBox
+            // 
+            this.OutputDataTextBox.Location = new System.Drawing.Point(0, 343);
+            this.OutputDataTextBox.Multiline = true;
+            this.OutputDataTextBox.Name = "OutputDataTextBox";
+            this.OutputDataTextBox.Size = new System.Drawing.Size(370, 115);
+            this.OutputDataTextBox.TabIndex = 34;
             // 
             // pictureBox1
             // 
@@ -146,6 +155,7 @@
             this.InputFormatTextBox.Size = new System.Drawing.Size(343, 36);
             this.InputFormatTextBox.TabIndex = 29;
             this.InputFormatTextBox.TabStop = false;
+            this.InputFormatTextBox.Text = "1:2";
             this.InputFormatTextBox.UseSystemPasswordChar = false;
             // 
             // nightLinkLabel1
@@ -255,14 +265,6 @@
             this.materialButton1.UseVisualStyleBackColor = true;
             this.materialButton1.Click += new System.EventHandler(this.FormatButton_Click);
             // 
-            // OutputDataTextBox
-            // 
-            this.OutputDataTextBox.Location = new System.Drawing.Point(0, 343);
-            this.OutputDataTextBox.Multiline = true;
-            this.OutputDataTextBox.Name = "OutputDataTextBox";
-            this.OutputDataTextBox.Size = new System.Drawing.Size(370, 115);
-            this.OutputDataTextBox.TabIndex = 34;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -272,7 +274,8 @@
             this.Controls.Add(this.airForm1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.HelpButton = true;
-            this.MinimumSize = new System.Drawing.Size(112, 35);
+            this.MaximumSize = new System.Drawing.Size(370, 557);
+            this.MinimumSize = new System.Drawing.Size(370, 557);
             this.Name = "Form1";
             this.Text = "REFORMATTER";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
